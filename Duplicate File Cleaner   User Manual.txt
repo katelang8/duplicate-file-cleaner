@@ -1,0 +1,152 @@
+一、这是什么 / What is this
+中文：
+一款 Windows 平台的重复文件清理工具。按文件内容查找重复文件（不只看文件名），由你自己决定删哪些、留哪些。删除的文件会移到回收站，删错了还能还原。
+
+English:
+A Windows tool for cleaning duplicate files. It finds duplicates by file content (not just by name), and lets you decide which to delete. Deleted files go to the Recycle Bin, so you can restore them if needed.
+
+二、启动 / How to Start
+中文：
+双击 DuplicateFileCleaner.exe 即可打开，无需安装 Python 或任何其他软件。
+
+如果被 360 等杀毒软件拦截，属于误报，把 exe 加入信任区即可（方法见文末）。
+
+English:
+Double-click DuplicateFileCleaner.exe to run. No Python or other software installation required.
+
+If blocked by antivirus (like 360), it is a false positive. Add the exe to the trust list (see the last section).
+
+三、界面布局 / Interface Layout
+从上到下 / From top to bottom:
+
+扫描区 / Scan Area — 选择文件夹、开始扫描
+
+排序分页区 / Sort & Pagination — 排序方式、翻页、每页组数
+
+操作按钮区 / Action Buttons — 删除、批量勾选、取消勾选
+
+结果列表区 / Result List — 按组展示重复文件（可滚动）
+
+双状态栏 / Dual Status Bar — 上行显示扫描汇总，下行显示勾选统计
+
+界面右上角有 语言 Language 下拉框，可随时切换中文 / English。
+There is a Language / 语言 dropdown at the top-right corner to switch between Chinese and English at any time.
+
+四、操作流程 / How to Use
+第 1 步 / Step 1：选择扫描目录 / Choose a folder
+
+点 浏览... / Browse...，选择要扫描的文件夹。程序会递归扫描所有子文件夹。
+Click Browse... to select the folder. All subfolders will be scanned recursively.
+
+第 2 步 / Step 2：开始扫描 / Start scanning
+
+点 开始扫描 / Scan，等待扫描完成。状态栏会显示进度。
+Click Scan and wait. Progress is shown in the status bar.
+
+第 3 步 / Step 3：查看和排序 / View and sort
+
+排序方式 / Sort by：文件大小 / File Size、创建时间 / Created Time
+
+方向 / Order：从大到小 / Descending、从小到大 / Ascending
+
+每页 / Per page：20 / 50 / 100 / 200
+
+点 上一页 / Prev、下一页 / Next 翻页
+
+第 4 步 / Step 4：勾选要删除的文件 / Check files to delete
+
+手动勾选，或使用快捷按钮：
+
+中文	English
+本页每组保留最早，勾选其余	Keep oldest in each group (this page)
+本页每组保留最新，勾选其余	Keep newest in each group (this page)
+本页每组保留最短路径，勾选其余	Keep shortest path in each group (this page)
+全部取消勾选	Clear All Checks
+每组内部也有同样的按钮，只作用于当前组。
+Each group also has the same buttons, applying only to that group.
+
+底部状态栏会实时显示勾选了多少文件、合计多大。
+The bottom status bar shows the number and total size of checked files in real time.
+
+第 5 步 / Step 5：删除 / Delete
+
+点 删除勾选文件 / Delete Checked → 弹出确认框 → 点"是 / Yes" → 文件被移到回收站。
+Click Delete Checked → confirm → files are moved to the Recycle Bin.
+
+删除完成后会显示释放的空间，并自动重新扫描刷新列表。
+After deleting, the freed space is shown, and the list refreshes automatically.
+
+五、单个文件的操作 / Per-file Actions
+复制按钮 / Copy button：复制该文件完整路径 / Copy the full path
+
+双击路径 / Double-click path：打开资源管理器并定位该文件 / Open the folder and select the file
+
+右键路径 / Right-click path：菜单可选 / Menu options:
+
+复制路径 / Copy Path
+
+打开文件所在位置 / Open File Location
+
+六、安全机制 / Safety Features
+删除是移到回收站，不是永久删除 / Files go to Recycle Bin, not permanently deleted
+
+禁止整组全部删除，每组至少保留一个 / Cannot delete an entire group; at least one file must be kept
+
+删除前二次确认，显示数量和预计释放空间 / Confirmation before deleting, showing count and estimated space
+
+跳过隐藏文件、空文件、快捷方式和符号链接 / Skips hidden files, empty files, shortcuts and symbolic links
+
+扫描在后台进行，界面不卡死 / Scanning runs in background, UI stays responsive
+
+七、常见问题 / FAQ
+Q1：扫描完显示结果时闪退？ / Crash when showing results?
+A：已通过分页功能修复，每页只渲染几十组。 / Fixed with pagination.
+
+Q2：删除时报"系统找不到指定的路径"？ / "System cannot find the path specified"?
+A：Windows 长路径问题，已修复（自动处理）。 / Long path issue on Windows, already fixed.
+
+Q3：360 报毒？ / 360 reports virus?
+A：误报。加入信任区即可（见下节）。 / False positive. Add to trust list (see below).
+
+Q4：扫描很慢？ / Scan is slow?
+A：文件多、文件大时正常。程序已按大小预筛优化。 / Normal for many or large files. Already optimized.
+
+Q5：某些重复文件没找出来？ / Some duplicates not found?
+A：只有内容完全相同才判定重复，这是故意的。 / Only identical content counts as duplicate. This is intentional.
+
+Q6：删错了怎么办？ / Deleted by mistake?
+A：去回收站还原。 / Restore from Recycle Bin.
+
+八、360 误报处理方法 / Handling 360 False Positive
+中文：
+打开 360 → 木马查杀 → 信任区 → 添加文件 → 选中该 exe。
+若已被隔离：先去隔离区还原，再加信任。
+同时开着 Windows Defender 的话，也要在"病毒和威胁防护 → 排除项"里加上该 exe。
+
+English：
+Open 360 → Trojan Scan → Trust Zone → Add File → select the exe.
+If already quarantined: restore it from Quarantine first, then add to trust.
+If Windows Defender is also running, add the exe to its exclusion list too.
+
+九、使用建议 / Tips
+首次使用先拿小文件夹试手 / Try a small folder first
+
+用"文件大小 + 从大到小"排序，优先清理占空间大的 / Sort by size descending to clean big ones first
+
+批量勾选推荐"每组保留最短路径"（原文件通常路径短，副本路径长）
+Recommended: keep shortest path (originals usually have shorter paths)
+
+重要数据操作前先备份 / Back up important data before operating
+
+十、技术信息 / Technical Info
+打包环境 / Built with: Python 3.9
+
+打包工具 / Packaging: PyInstaller (--onefile --windowed)
+
+核心依赖 / Dependencies: send2trash
+
+界面 / GUI: tkinter
+
+平台 / Platform: Windows
+
+开源许可 / License: MIT
